@@ -5,6 +5,7 @@ import (
 
 	"github.com/webstradev/aoc-2022/day1"
 	"github.com/webstradev/aoc-2022/day2"
+	"github.com/webstradev/aoc-2022/day3"
 )
 
 func main() {
@@ -20,4 +21,9 @@ func main() {
 	game.PlayGameFromFile()
 	log.Printf("Total score is %d", game.TotalScore)
 	log.Printf("Total score the real way is %d", game.TotalScore2)
+
+	// Day 3
+	trip := day3.NewTrip("./day3/input.txt")
+	trip.ComputeTotalPriorityFromFile()
+	log.Printf("Total priority is %d", trip.PriorityTotal)
 }
