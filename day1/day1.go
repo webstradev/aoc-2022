@@ -15,13 +15,10 @@ type ElfRecords struct {
 }
 
 func NewElfRecord(path string) *ElfRecords {
-	return &ElfRecords{Path: path}
+	return &ElfRecords{Path: path, Records: []CaloriesRecord{}}
 }
 
 func (e *ElfRecords) ReadRecordsFromInputFile() {
-	// Initialize AllRecords Object
-	e.Records = []CaloriesRecord{}
-
 	// Read the file
 	f, err := os.Open(e.Path)
 	if err != nil {
