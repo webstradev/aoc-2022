@@ -25,5 +25,7 @@ func main() {
 	// Day 3
 	trip := day3.NewTrip("./day3/input.txt")
 	trip.ComputeTotalPriorityFromFile()
+	trip.ComputeSecondPriorityFromRucksacks()
 	log.Printf("Total priority is %d", trip.PriorityTotal)
+	log.Printf("Total priority for badges is %d", trip.PriorityTotal2)
 }

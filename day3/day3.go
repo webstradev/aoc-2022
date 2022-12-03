@@ -2,6 +2,7 @@ package day3
 
 import (
 	"bufio"
+	"errors"
 	"os"
 	"strings"
 )
@@ -35,9 +36,11 @@ func (r *RuckSack) FindSharedItem() {
 }
 
 type Trip struct {
-	Path          string
-	Rucksacks     []RuckSack
-	PriorityTotal int
+	Path           string
+	Rucksacks      []RuckSack
+	PriorityTotal  int
+	Badges         []string
+	PriorityTotal2 int
 }
 
 func NewTrip(path string) *Trip {
@@ -79,4 +82,29 @@ func (t *Trip) ComputeTotalPriorityFromFile() {
 	}
 
 	t.PriorityTotal = totalPriority
+}
+
+func (t *Trip) ComputeSecondPriorityFromRucksacks() {
+	if len(t.Rucksacks) == 0 {
+		panic(errors.New("no rucksacks to compute priority from"))
+	}
+
+	for i := 0; i < len(t.Rucksacks); i += 3 {
+	Rucksack:
+		for _, item := range t.Rucksacks[i].Items {
+			for _, item2 := range t.Rucksacks[i+1].Items {
+				if item == item2 {
+					for _, item3 := range t.Rucksacks[i+2].Items {
+						if item == item2 && item2 == item3 {
+							t.Badges = append(t.Badges, item)
+							t.PriorityTotal2 += strings.Index(priorities, item) + 1
+							break Rucksack
+						}
+					}
+				}
+			}
+		}
+
+	}
+
 }
