@@ -33,43 +33,27 @@ func TestElfRecords_ReadRecordsFromInputFile(t *testing.T) {
 	}
 }
 
-func TestElfRecords_FindCalorieCountForMaxElf(t *testing.T) {
+func TestElfRecords_Solve(t *testing.T) {
 	tests := []struct {
-		name string
-		e    *ElfRecords
-		want int
+		name  string
+		e     *ElfRecords
+		want1 int
+		want2 int
 	}{
 		{
-			name: "Test ReadRecordsFromInputFile",
-			e:    NewElfRecord("./testdata/calorierecords.txt"),
-			want: 24000,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			tt.e.ReadRecordsFromInputFile()
-			assert.Equal(t, tt.e.FindCalorieCountForMaxElf(), tt.want)
-		})
-	}
-}
-
-func TestElfRecords_FindCalorieCountForTopThreeElves(t *testing.T) {
-	tests := []struct {
-		name string
-		e    *ElfRecords
-		want int
-	}{
-		{
-			name: "Test ReadRecordsFromInputFile",
-			e:    NewElfRecord("./testdata/calorierecords.txt"),
-			want: 45000,
+			name:  "Test ReadRecordsFromInputFile",
+			e:     NewElfRecord("./testdata/calorierecords.txt"),
+			want1: 24000,
+			want2: 45000,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Run(tt.name, func(t *testing.T) {
 				tt.e.ReadRecordsFromInputFile()
-				assert.Equal(t, tt.e.FindCalorieCountForTopThreeElves(), tt.want)
+				part1, part2 := tt.e.Solve()
+				assert.Equal(t, part1, tt.want1)
+				assert.Equal(t, part2, tt.want2)
 			})
 		})
 	}

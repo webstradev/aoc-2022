@@ -68,29 +68,8 @@ func (e *ElfRecords) ReadRecordsFromInputFile() {
 	}
 }
 
-func (e *ElfRecords) FindCalorieCountForMaxElf() int {
-	if len(e.Records) == 0 {
-		panic(errors.New("no records found"))
-	}
-
-	maxCount := 0
-
-	for _, record := range e.Records {
-		count := 0
-
-		for _, calorieCount := range record {
-			count += calorieCount
-		}
-
-		if count > maxCount {
-			maxCount = count
-		}
-	}
-
-	return maxCount
-}
-
-func (e *ElfRecords) FindCalorieCountForTopThreeElves() int {
+// Function to find the calorie count for a highest elf and the top three elvess
+func (e *ElfRecords) Solve() (int, int) {
 	if len(e.Records) == 0 {
 		panic(errors.New("no records found"))
 	}
@@ -122,5 +101,5 @@ func (e *ElfRecords) FindCalorieCountForTopThreeElves() int {
 		}
 	}
 
-	return highest + secondHighest + thirdHighest
+	return highest, (highest + secondHighest + thirdHighest)
 }
