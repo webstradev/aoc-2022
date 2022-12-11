@@ -1,4 +1,4 @@
-package day9
+package day05
 
 import (
 	"testing"
@@ -10,12 +10,12 @@ func TestSolver_SolvePart1(t *testing.T) {
 	tests := []struct {
 		name string
 		s    *Solver
-		want int
+		want string
 	}{
 		{
 			name: "Example from aoc",
 			s:    NewSolver("./testdata/input.txt"),
-			want: 0,
+			want: "CMZ",
 		},
 	}
 	for _, tt := range tests {
@@ -30,12 +30,12 @@ func TestSolver_SolvePart2(t *testing.T) {
 	tests := []struct {
 		name string
 		s    *Solver
-		want int
+		want string
 	}{
 		{
 			name: "Example from aoc",
 			s:    NewSolver("./testdata/input.txt"),
-			want: 0,
+			want: "MCD",
 		},
 	}
 	for _, tt := range tests {
