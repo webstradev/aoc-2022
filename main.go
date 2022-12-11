@@ -7,6 +7,7 @@ import (
 	"github.com/webstradev/aoc-2022/day2"
 	"github.com/webstradev/aoc-2022/day3"
 	"github.com/webstradev/aoc-2022/day4"
+	"github.com/webstradev/aoc-2022/day5"
 )
 
 func main() {
@@ -40,4 +41,12 @@ func main() {
 	log.Println("=== Day 4 ===")
 	log.Println("Number of useless assignments is", solver.NumberOfUselessAssignments)
 	log.Println("Number of overlapping assignments is", solver.NumberOfOverlappingAssignments)
+
+	// Day 5
+	craneSolver := day5.NewSolver("./day5/input.txt")
+	craneSolver.SolvePart1()
+	craneSolver.SolvePart2()
+	log.Println("=== Day 5 ===")
+	log.Println("Top Crates for crane 9000 are", craneSolver.Result1)
+	log.Println("Top Crates for crane 9001 are", craneSolver.Result2)
 }
